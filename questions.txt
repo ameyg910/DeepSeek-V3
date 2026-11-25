@@ -1,0 +1,26 @@
+1. Why use dataclasses?
+Ans. A dataclass automatically generates an initializer for us.
+     Instead of writing: 
+class ModelConfig:
+    def __init__(
+        self,
+        vocab_size,
+        hidden_dim,
+        num_layers,
+        ...
+    ):
+        self.vocab_size = vocab_size
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
+
+We can write: 
+@dataclass
+class ModelConfig:
+    vocab_size: int
+    hidden_dim: int
+    num_layers: int
+
+Python generates the initializer automatically.
+
+Also, ModelConfig(**raw["model"]) takes the dictionary loaded from YAML,
+   and passes its entries as keyword arguments.

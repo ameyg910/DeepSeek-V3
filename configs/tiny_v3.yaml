@@ -1,0 +1,32 @@
+
+model:
+  vocab_size: 12000
+  hidden_dim: 512
+  num_layers: 8
+  num_heads: 8
+  max_seq_len: 512
+
+  # MLA dimensions
+  q_lora_rank: 128
+  kv_lora_rank: 64
+  qk_nope_head_dim: 64
+  qk_rope_head_dim: 32
+  v_head_dim: 64
+
+  # DeepSeekMoE
+  num_dense_layers: 2
+  num_experts: 8
+  num_experts_per_token: 2
+  num_shared_experts: 1
+
+training:
+  batch_size: 2
+  learning_rate: 0.0003
+  weight_decay: 0.1
+  gradient_accumulation_steps: 8
+  max_steps: 1000
+  warmup_steps: 50
+  gradient_clip: 1.0
+
+  seed: 42
+
