@@ -1,10 +1,10 @@
 from pathlib import Path 
 
 from tokenizers import Tokenizer 
-from tokenizer.models import BPE 
+from tokenizers.models import BPE 
 from tokenizers.pre_tokenizers import ByteLevel
-from tokenizers.decode import ByteLevel as ByteLevelDecoder
-from tokenizer.trainers import BpeTrainer
+from tokenizers.decoders import ByteLevel as ByteLevelDecoder
+from tokenizers.trainers import BpeTrainer
 
 class MathTokenizer: 
     PAD = "[PAD]"
@@ -27,7 +27,7 @@ class MathTokenizer:
         self.tokenizer = Tokenizer(
             BPE(unk_token=self.UNK)
         )
-        self.tokenizer.pre_tokenizer = ByteLevel(add_prefix=False)
+        self.tokenizer.pre_tokenizer = ByteLevel(add_prefix_space=False, trim_offsets=False,)
  
         self.tokenizer.decoder = ByteLevelDecoder()
 
