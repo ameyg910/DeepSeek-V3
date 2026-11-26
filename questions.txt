@@ -24,3 +24,15 @@ Python generates the initializer automatically.
 
 Also, ModelConfig(**raw["model"]) takes the dictionary loaded from YAML,
    and passes its entries as keyword arguments.
+
+2. for(int i = 1; i <= D; i++) sum += (x[i] * x[i]); 
+ sum /= D; 
+RMS(x) = sqrt(sum); 
+
+
+x_normalized[i] = x[i]/(RMS(x) + eps);
+
+applying learnable scale parameter: 
+y[i] = x_normalized[i]*gamma[i]
+
+(gamma is initialized to ones, and eps is a small number (10 to the power -6)); 
