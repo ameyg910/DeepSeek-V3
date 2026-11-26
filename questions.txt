@@ -36,3 +36,11 @@ applying learnable scale parameter:
 y[i] = x_normalized[i]*gamma[i]
 
 (gamma is initialized to ones, and eps is a small number (10 to the power -6)); 
+
+
+In RoPE: 
+if x has shape (B, heads, L, D):
+x1, x2 has shape (B, heads, L, D/2)
+angles : (L, D/2)
+cos, sin become (1, 1, L, D/2) (Through unsqueeze)
+the rotated output remains (B, heads, L, D)
