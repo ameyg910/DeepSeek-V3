@@ -51,3 +51,4 @@ def test_rope_supports_custom_positions():
 def test_rope_requires_even_dimension():
     with pytest.raises(ValueError):
         RotaryEmbedding(head_dim=7)
+
