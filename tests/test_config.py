@@ -6,6 +6,8 @@ def test_load_config():
     assert config.model.hidden_dim == 512
     assert config.model.num_layers == 8
     assert config.model.num_experts == 8
+    print(config.model.dense_intermediate_dim)
+    print(config.model.expert_intermediate_dim)
 
 
 def test_config_dimensions():

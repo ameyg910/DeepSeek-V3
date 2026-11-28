@@ -21,6 +21,8 @@ class ModelConfig:
     num_experts: int
     num_experts_per_token: int 
     num_shared_experts: int 
+    dense_intermediate_dim: int
+    expert_intermediate_dim: int
 
 
     def validate(self): 
@@ -36,6 +38,9 @@ class ModelConfig:
 
         assert self.q_lora_rank > 0
         assert self.kv_lora_rank > 0
+
+        assert self.dense_intermediate_dim > 0
+        assert self.expert_intermediate_dim > 0
 
 @dataclass
 class TrainingConfig:
