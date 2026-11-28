@@ -32,6 +32,11 @@ class MathTextDataset(Dataset):
                 for i, token in enumerate(labels)
             ]
 
+            attention_mask = [
+                1 if i < min(valid_length, self.seq_len) else 0
+                for i in range(self.seq_len)
+            ]
+
             self.samples.append(
                 {
                     "input_ids": torch.tensor(
@@ -40,6 +45,10 @@ class MathTextDataset(Dataset):
                     "labels": torch.tensor(
                         labels, dtype=torch.long
                     ),
+                    "attention_mask": torch.tensor(
+                        attention_mask, 
+                        dtype=torch.bool
+                    )
                 }
             )
     def __len__(self):
